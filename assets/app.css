@@ -1,0 +1,32 @@
+/**
+ * Main app styles
+ * @author Naylon Kessler de Aquino <naylon.kessler@gmail.com>
+ */
+
+* {
+    margin: 0;
+    padding: 10px;
+}
+
+html {
+    padding: 0;
+}
+
+body {
+    font-family: Roboto;
+    padding: 0;
+}
+
+a {
+    color: #568;
+    text-decoration: none;
+}
+
+.main-menu {
+    background-color: #568;
+    color: #fff;
+}
+
+.main-menu a {
+    color: #fff;
+}
