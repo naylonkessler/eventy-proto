@@ -46,7 +46,7 @@ class StoreContact
 
         $this->mapper->insert($this->model);
 
-        header('Location: /App/Actions/Contacts.php');
+        redirect('/App/Actions/Contacts.php');
     }
 }
 

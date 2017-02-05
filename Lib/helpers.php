@@ -5,6 +5,16 @@
  */
 
 /**
+ * Redirect to a received location.
+ *
+ * @param  string  $location
+ */
+function redirect($location) {
+    header("Location: {$location}");
+    exit;
+}
+
+/**
  * Return some data from $_REQUEST.
  *
  * @param  string  $key

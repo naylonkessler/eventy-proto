@@ -18,7 +18,7 @@ class InstallPlugin
     {
         App::$pluginManager->install($_REQUEST['plugin']);
 
-        header('Location: /App/Actions/Plugins.php');
+        redirect('/App/Actions/Plugins.php');
     }
 }
 

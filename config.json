@@ -1,5 +1,8 @@
 {
     "plugins": {
-        "installed": []
+        "installed": [
+            "sales",
+            "products"
+        ]
     }
 }

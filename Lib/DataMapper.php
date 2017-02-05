@@ -42,16 +42,11 @@ class DataMapper
     public function all(Model $model)
     {
         $sql = "SELECT * FROM {$model->table};";
-        $results = [];
 
         $query = $this->pdo->prepare($sql);
         $query->execute();
 
-        while ($result = $query->fetchObject(get_class($model))) {
-            $results[] = $result;
-
-            $this->publish('read', $result);
-        }
+        $results = $this->fetchObjects($query, $model);
 
         $this->publish('read-all', $model, $results);
 
@@ -66,7 +61,7 @@ class DataMapper
      */
     public function delete(Model $model)
     {
-        $sql = "DELETE FROM {$model->table} WHERE id = ?";
+        $sql = "DELETE FROM {$model->table} WHERE id = ?;";
 
         $this->publish('delete', $model);
 
@@ -92,16 +87,11 @@ class DataMapper
         extract($this->filterBindings($criteria));
 
         $sql = "SELECT * FROM {$model->table} WHERE {$where};";
-        $results = [];
 
         $query = $this->pdo->prepare($sql);
         $query->execute($values);
 
-        while ($result = $query->fetchObject(get_class($model))) {
-            $results[] = $result;
-
-            $this->publish('read', $result);
-        }
+        $results = $this->fetchObjects($query, $model);
 
         $this->publish('read-filter', $model, $results);
 
@@ -145,7 +135,7 @@ class DataMapper
 
         $this->publish('insert', $model);
 
-        $inserted = (boolean)$this->pdo->prepare($sql)
+        $inserted = (boolean) $this->pdo->prepare($sql)
                                     ->execute($values);
 
         if ($inserted) {
@@ -185,7 +175,7 @@ class DataMapper
 
         $this->publish('update', $model);
 
-        $updated = (boolean)$this->pdo->prepare($sql)
+        $updated = (boolean) $this->pdo->prepare($sql)
                                     ->execute($values);
 
         if ($updated) {
@@ -193,6 +183,27 @@ class DataMapper
         }
 
         return $updated;
+    }
+
+    /**
+     * Fetch objects from received query and model.
+     *
+     * @param  Resource  $query
+     * @param  \Lib\Model  $model
+     * @return array
+     */
+    protected function fetchObjects($query, $model)
+    {
+        $results = [];
+        $class = get_class($model);
+
+        while ($result = $query->fetchObject($class)) {
+            $results[] = $result;
+
+            $this->publish('read', $result);
+        }
+
+        return $results;
     }
 
     /**

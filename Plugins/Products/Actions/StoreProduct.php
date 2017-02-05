@@ -44,7 +44,7 @@ class StoreProduct
 
         $this->mapper->insert($this->model);
 
-        header('Location: /Plugins/Products/Actions/Products.php');
+        redirect('/Plugins/Products/Actions/Products.php');
     }
 }
 

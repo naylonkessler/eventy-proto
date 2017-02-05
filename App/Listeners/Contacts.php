@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use Lib\App;
 use App\Models\Contact;
+use Lib\App;
 
 /**
  * Contacts listener for events.

@@ -49,14 +49,9 @@ class PubSub
      * @param  mixed...  $params
      * @return mixed
      */
-    public function publish($event)
+    public function publish($event, ...$params)
     {
-        if (empty($this->subscriptions[$event])) {
-            return;
-        }
-
-        $params = func_get_args();
-        array_shift($params);
+        if (empty($this->subscriptions[$event])) return;
 
         $results = [];
 
@@ -78,9 +73,9 @@ class PubSub
      * @param  mixed...  $params
      * @return mixed
      */
-    public function publishToFirst($event)
+    public function publishToFirst($event, ...$params)
     {
-        $results = call_user_func_array([$this, 'publish'], func_get_args());
+        $results = $this->publish($event, ...$params);
 
         return $results? $results[0] : null;
     }
@@ -91,9 +86,9 @@ class PubSub
      * @param  string  $event
      * @param  mixed...  $params
      */
-    public function publishToRender($event)
+    public function publishToRender($event, ...$params)
     {
-        $results = call_user_func_array([$this, 'publish'], func_get_args());
+        $results = $this->publish($event, ...$params);
 
         echo implode('', array_filter((array) $results, 'is_string'));
     }

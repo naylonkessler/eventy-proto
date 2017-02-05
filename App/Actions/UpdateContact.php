@@ -48,7 +48,7 @@ class UpdateContact
 
         $this->mapper->update($model);
 
-        header('Location: /App/Actions/Contacts.php');
+        redirect('/App/Actions/Contacts.php');
     }
 }
 

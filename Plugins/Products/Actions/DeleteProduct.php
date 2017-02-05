@@ -43,7 +43,7 @@ class DeleteProduct
 
         $this->mapper->delete($model);
 
-        header('Location: /Plugins/Products/Actions/Products.php');
+        redirect('/Plugins/Products/Actions/Products.php');
     }
 }
 

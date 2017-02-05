@@ -6,4 +6,4 @@
 
 include 'bootstrap.php';
 
-header('Location: /App/Actions/Contacts.php');
+redirect('/App/Actions/Contacts.php');

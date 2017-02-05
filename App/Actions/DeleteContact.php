@@ -43,7 +43,7 @@ class DeleteContact
 
         $this->mapper->delete($model);
 
-        header('Location: /App/Actions/Contacts.php');
+        redirect('/App/Actions/Contacts.php');
     }
 }
 

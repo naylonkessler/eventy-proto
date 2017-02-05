@@ -32,13 +32,13 @@ class PluginManager
         $installed = $this->installedKeys();
         $iterator = new \FilesystemIterator(ROOT.'/Plugins');
 
-        foreach ($iterator as $file) {
-            if ($file->isDir()) {
-                $path = $file->getPathname().'/manifest.json';
-                $meta = json_decode(file_get_contents($path));
-                $meta->installed = in_array($meta->key, $installed);
-                $available[$meta->key] = $meta;
-            }
+        foreach ($iterator as $entry) {
+            if ( ! $entry->isDir()) continue;
+
+            $path = $entry->getPathname().'/manifest.json';
+            $meta = json_decode(file_get_contents($path));
+            $meta->installed = in_array($meta->key, $installed);
+            $available[$meta->key] = $meta;
         }
 
         return $available;

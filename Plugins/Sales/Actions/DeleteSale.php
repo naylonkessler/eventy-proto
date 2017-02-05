@@ -43,7 +43,7 @@ class DeleteSale
 
         $this->mapper->delete($model);
 
-        header('Location: /Plugins/Sales/Actions/Sales.php');
+        redirect('/Plugins/Sales/Actions/Sales.php');
     }
 }
 
