@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Application helpers
+ * Application support wrappers
  */
 
 /**

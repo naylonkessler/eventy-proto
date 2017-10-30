@@ -39,7 +39,7 @@ class ShowContact
      */
     public function handle()
     {
-        $contact = $this->mapper->find($_REQUEST['contact'], $this->model);
+        $contact = $this->mapper->find(request('contact'), $this->model);
 
         include '../views/show-contact.php';
     }

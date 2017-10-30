@@ -9,4 +9,4 @@ define('PLUGINS', __DIR__.'/Plugins/');
 
 include 'autoload.php';
 include 'start.php';
-include 'Lib/helpers.php';
+include 'Lib/wrappers.php';

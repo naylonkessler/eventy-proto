@@ -39,10 +39,10 @@ class StoreContact
      */
     public function handle()
     {
-        $this->model->name = $_REQUEST['name'];
-        $this->model->email = $_REQUEST['email'];
-        $this->model->mobile = $_REQUEST['mobile'];
-        $this->model->phone = $_REQUEST['phone'];
+        $this->model->name = request('name');
+        $this->model->email = request('email');
+        $this->model->mobile = request('mobile');
+        $this->model->phone = request('phone');
 
         $this->mapper->insert($this->model);
 

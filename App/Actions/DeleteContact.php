@@ -39,7 +39,7 @@ class DeleteContact
      */
     public function handle()
     {
-        $model = $this->mapper->find($_REQUEST['contact'], $this->model);
+        $model = $this->mapper->find(request('contact'), $this->model);
 
         $this->mapper->delete($model);
 

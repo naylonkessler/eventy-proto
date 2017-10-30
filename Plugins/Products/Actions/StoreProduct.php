@@ -39,8 +39,8 @@ class StoreProduct
      */
     public function handle()
     {
-        $this->model->name = $_REQUEST['name'];
-        $this->model->value = $_REQUEST['value'];
+        $this->model->name = request('name');
+        $this->model->value = request('value');
 
         $this->mapper->insert($this->model);
 

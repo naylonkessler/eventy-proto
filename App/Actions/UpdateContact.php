@@ -39,12 +39,12 @@ class UpdateContact
      */
     public function handle()
     {
-        $model = $this->mapper->find($_REQUEST['id'], $this->model);
+        $model = $this->mapper->find(request('id'), $this->model);
 
-        $model->name = $_REQUEST['name'];
-        $model->email = $_REQUEST['email'];
-        $model->mobile = $_REQUEST['mobile'];
-        $model->phone = $_REQUEST['phone'];
+        $model->name = request('name');
+        $model->email = request('email');
+        $model->mobile = request('mobile');
+        $model->phone = request('phone');
 
         $this->mapper->update($model);
 

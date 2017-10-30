@@ -39,7 +39,7 @@ class DeleteProduct
      */
     public function handle()
     {
-        $model = $this->mapper->find($_REQUEST['product'], $this->model);
+        $model = $this->mapper->find(request('product'), $this->model);
 
         $this->mapper->delete($model);
 

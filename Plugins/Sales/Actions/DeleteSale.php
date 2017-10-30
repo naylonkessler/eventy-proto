@@ -39,7 +39,7 @@ class DeleteSale
      */
     public function handle()
     {
-        $model = $this->mapper->find($_REQUEST['sale'], $this->model);
+        $model = $this->mapper->find(request('sale'), $this->model);
 
         $this->mapper->delete($model);
 

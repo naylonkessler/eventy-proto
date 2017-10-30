@@ -16,7 +16,7 @@ class UninstallPlugin
      */
     public function handle()
     {
-        App::$pluginManager->uninstall($_REQUEST['plugin']);
+        App::$pluginManager->uninstall(request('plugin'));
 
         redirect('/App/Actions/Plugins.php');
     }

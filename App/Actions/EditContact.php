@@ -39,7 +39,7 @@ class EditContact
      */
     public function handle()
     {
-        $contact = $this->mapper->find($_REQUEST['contact'], $this->model);
+        $contact = $this->mapper->find(request('contact'), $this->model);
 
         include '../views/edit-contact.php';
     }

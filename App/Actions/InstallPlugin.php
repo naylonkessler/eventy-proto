@@ -16,7 +16,7 @@ class InstallPlugin
      */
     public function handle()
     {
-        App::$pluginManager->install($_REQUEST['plugin']);
+        App::$pluginManager->install(request('plugin'));
 
         redirect('/App/Actions/Plugins.php');
     }
